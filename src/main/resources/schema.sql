@@ -1,17 +1,17 @@
 DROP TABLE IF EXISTS transactions;
-DROP TABLE IF EXISTS customers;
-CREATE TABLE customers (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
-CREATE TABLE transactions (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    customer_id BIGINT NOT NULL,
-    amount DOUBLE NOT NULL,
-    transaction_date DATE NOT NULL,
+DROP TABLE IF EXISTS customer;
 
-    CONSTRAINT fk_customer
+CREATE TABLE customer (
+    customer_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE transactions (
+    transaction_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    transaction_date DATE NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    customer_id BIGINT,
+    CONSTRAINT fk_transaction_customer
         FOREIGN KEY (customer_id)
-        REFERENCES customers(id)
-        ON DELETE CASCADE
+        REFERENCES customer(customer_id)
 );

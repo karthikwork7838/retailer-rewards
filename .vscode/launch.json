@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "RewardsApplication",
+            "request": "launch",
+            "mainClass": "com.retailer.rewards.RewardsApplication",
+            "projectName": "rewards",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "maven: install",
+            "serverReadyAction": {
+                "pattern": "Started RewardsApplication",
+                "uriFormat": "http://localhost:8080",
+                "action": "openExternally"
+            }
+        }
+    ]
+}
